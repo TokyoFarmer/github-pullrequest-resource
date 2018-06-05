@@ -40,7 +40,7 @@ describe Filters::Label do
       payload = { 'source' => { 'repo' => 'user/repo', 'label' => 'bug' } }
       filter = described_class.new(pull_requests: pull_requests, input: Input.instance(payload: payload))
 
-      expect(filter.pull_requests).to not_eq [pr]
+      expect(filter.pull_requests).to_not eq [pr]
     end
   end
 end
