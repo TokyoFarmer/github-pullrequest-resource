@@ -12,7 +12,7 @@ module Filters
         @memoized ||= @pull_requests.select do |pr|
           issue  = Octokit.issue(@input.source.repo, pr.id)
           labels = issue[:labels] || []
-          labels.find { |l| !l['name'].to_s.casecmp(@input.source.label.to_s.downcase).zero? }
+          labels.find { |l| l['name'].to_s.casecmp(@input.source.label.to_s.downcase).zero? } ? [] : @pull_requests
         end
       else
         @pull_requests
